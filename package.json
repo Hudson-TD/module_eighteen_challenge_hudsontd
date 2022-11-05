@@ -1,0 +1,26 @@
+{
+  "name": "module_eighteen_challenge_hudsontd",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hudson-TD/module_eighteen_challenge_hudsontd.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hudson-TD/module_eighteen_challenge_hudsontd/issues"
+  },
+  "homepage": "https://github.com/Hudson-TD/module_eighteen_challenge_hudsontd#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.7.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  }
+}
