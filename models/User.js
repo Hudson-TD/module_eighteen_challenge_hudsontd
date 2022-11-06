@@ -1,7 +1,7 @@
 const { Schema, model } = require("mongoose");
 
 // need email validation before turn in, moving on for now
-const userSchema = new mongoose.Schema(
+const userSchema = new Schema(
   {
     username: {
       type: String,
@@ -37,10 +37,10 @@ const userSchema = new mongoose.Schema(
 );
 
 // Pulling value of friends array not stored in MongoDB
-UserSchema.virtual("friendCount").get(function () {
+userSchema.virtual("friendCount").get(function () {
   return this.friends.length;
 });
 
-const User = mongoose.model("User", userSchema);
+const User = model("User", userSchema);
 
 module.exports = User;

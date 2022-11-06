@@ -23,6 +23,7 @@ module.exports = {
       .then((newUser) => res.json(newUser))
       .catch((err) => res.status(500).json(err));
   },
+  // Update user
   updateUser(req, res) {
     User.findOneAndUpdate(
       { _id: req.params.userId },
@@ -36,4 +37,5 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
+  // Delete user
 };
