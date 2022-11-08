@@ -9,12 +9,18 @@ module.exports = {
   },
   // Get one specific thought
   getSingleThought(req, res) {
-    Thought.findOne({ _id: req.params.thoughtID })
+    Thought.findOne({ _id: req.params.thoughtId })
       .then((thought) =>
         !thought
           ? res.status(404).json({ message: "No thought found with this ID" })
           : res.json(thought)
       )
+      .catch((err) => res.status(500).json(err));
+  },
+  // Create new thought
+  createThought(req, res) {
+    Thought.create(req.body)
+      .then((newThought) => res.status(201).json(newThought))
       .catch((err) => res.status(500).json(err));
   },
 };
