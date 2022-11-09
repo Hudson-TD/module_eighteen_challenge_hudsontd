@@ -37,4 +37,10 @@ module.exports = {
       )
       .catch((err) => res.status(500).json(err));
   },
+  // Delete thought
+  deleteThought(req, res) {
+    Thought.deleteOne({ _id: req.params.thoughtId })
+      .then(res.status(204))
+      .catch((err) => res.status(500).json(err));
+  },
 };
