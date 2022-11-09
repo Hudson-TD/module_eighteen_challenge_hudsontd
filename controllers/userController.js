@@ -10,6 +10,8 @@ module.exports = {
   // Get one specific user
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId })
+      .select("-__v")
+      .populate("thoughts")
       .then((user) =>
         !user
           ? res.status(404).json({ message: "No user found with this ID" })
@@ -46,7 +48,21 @@ module.exports = {
       .then((user) =>
         !user
           ? res.status(404).json({ message: "No user found with this ID" })
-          : res.status(204)
+          : res.status(204).json(user)
+      )
+      .catch((err) => res.status(500).json(err));
+  },
+  // Add friend
+  addFriend({ params }, res) {
+    User.findOneAndUpdate(
+      { _id: params.userId },
+      { $addToSet: { friends: params.friendId } },
+      { new: true, runValidators: true }
+    )
+      .then((user) =>
+        !user
+          ? res.status(404).json({ message: "No user found with this ID" })
+          : res.status(204).json(user)
       )
       .catch((err) => res.status(500).json(err));
   },
