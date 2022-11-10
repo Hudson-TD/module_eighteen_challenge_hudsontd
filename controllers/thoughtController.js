@@ -19,8 +19,18 @@ module.exports = {
   },
   // Create new thought
   createThought(req, res) {
-    Thought.create(req.body)
-      .then((newThought) => res.status(201).json(newThought))
+    Thought.create({
+      username: req.body.username,
+      thoughtText: req.body.thoughtText,
+    })
+      .then((newThought) => {
+        User.findOneAndUpdate(
+          { _id: req.body.userId },
+          { $push: { thoughts: newThought._id } }
+        )
+          .then(() => res.status(201).json(newThought))
+          .catch((err) => res.status(500).json(err));
+      })
       .catch((err) => res.status(500).json(err));
   },
   // Update thought
