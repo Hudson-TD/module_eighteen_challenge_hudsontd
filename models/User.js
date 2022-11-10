@@ -1,6 +1,5 @@
 const { Schema, model, Types } = require("mongoose");
 
-// need email validation before turn in, moving on for now
 const userSchema = new Schema(
   {
     username: {

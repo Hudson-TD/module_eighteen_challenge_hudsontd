@@ -1,8 +1,6 @@
-const { Schema, model } = require("mongoose");
-const reactionSchema = require("./Reaction");
+const { Schema, model, Types } = require("mongoose");
+const moment = require("moment");
 
-// Need to implement a helper function to pass in to the getter to format date TODO
-// add get: funcName to createdAt object
 const thoughtSchema = new Schema(
   {
     thoughtText: {
@@ -14,6 +12,9 @@ const thoughtSchema = new Schema(
     createdAt: {
       type: Date,
       default: Date.now,
+      // moment npm for timestamp formatting
+      get: (createdAtVal) =>
+        moment(createdAtVal).format("MMM DD, YYYY [at] hh:mm a"),
     },
     username: {
       type: String,
@@ -29,6 +30,29 @@ const thoughtSchema = new Schema(
     id: false,
   }
 );
+
+const reactionSchema = new Schema({
+  reactionId: {
+    type: Schema.Types.ObjectId,
+    default: () => new Types.ObjectId(),
+  },
+  reactionBody: {
+    type: String,
+    required: true,
+    maxlength: 280,
+  },
+  username: {
+    type: String,
+    required: true,
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+    // moment npm for timestamp formatting
+    get: (createdAtVal) =>
+      moment(createdAtVal).format("MMM DD, YYYY [at] hh:mm a"),
+  },
+});
 
 const Thought = model("Thought", thoughtSchema);
 
