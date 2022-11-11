@@ -24,6 +24,8 @@ Technologies Used:
 
 First clone the repository and install the necessary dependencies via the ```npm install``` command. Next invoke the application via the command line with ```nodemon server.js```. Once the server is up and running you can use your desired API testing/development platform to interact.
 
+Check out a video of the functionality here: https://drive.google.com/file/d/1x8ByklvB_8IEdvI3K3iABWRnEj5ZyRVK/view
+
 ## Contributing
 
 Thank you for your interest in contributing, however I am not looking for additional contributions at this time.
