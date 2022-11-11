@@ -75,7 +75,7 @@ module.exports = {
       .then((user) =>
         !user
           ? res.status(404).json({ message: "No user found with this ID" })
-          : res.status(204).json(user)
+          : res.status(204).send()
       )
       .catch((err) => res.status(500).json(err));
   },
